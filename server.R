@@ -20,8 +20,7 @@ shinyServer(function(input, output, session) {
 	
 	observe({
 		autoUpdate()
-		color = rgb(runif(1), runif(1), runif(1))
-		
+		color = rgb(runif(1), runif(1), runif(1))		
 		session$sendCustomMessage(type = "myCallbackHandler", color)
 	})
 	

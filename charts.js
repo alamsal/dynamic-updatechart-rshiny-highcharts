@@ -1,3 +1,6 @@
+var1 = function(){return (new Date()).getTime();};
+var2 = function(){return Math.random();};
+ 
 $(function () {
     $(document).ready(function () {
         Highcharts.setOptions({
@@ -16,10 +19,9 @@ $(function () {
 
                         // set up the updating of the chart each second
                         var series = this.series[0];
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                y = Math.random();
-                            series.addPoint([x, y], true, true);
+                        setInterval(function () { 
+                            console.log(var1 +"--"+ var2)
+                            series.addPoint([var1(),var2()], true, true);
                         }, 1000);
                     }
                 }
