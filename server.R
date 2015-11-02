@@ -15,5 +15,16 @@ shinyServer(function(input, output, session) {
 		
 		session$sendCustomMessage(type = "myCallbackHandler", color)
 	})
+	
+	autoUpdate <- reactiveTimer(1000,session)
+	
+	observe({
+		autoUpdate()
+		color = rgb(runif(1), runif(1), runif(1))
+		
+		session$sendCustomMessage(type = "myCallbackHandler", color)
+	})
+	
+	
  
 })
