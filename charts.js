@@ -1,9 +1,9 @@
 var1 = function(){
     var aaa= JSON.parse(serverVariable);
-    return aaa.X;};
+    return parseInt(aaa.X)};
 var2 = function(){
     var bbb = JSON.parse(serverVariable);
-    return bbb.Y;};
+    return bbb.Y*100+1;};
 
 $(function () {
     $(document).ready(function () {
@@ -34,7 +34,7 @@ $(function () {
                 text: 'Live random data'
             },
             xAxis: {
-                type: 'datetime',
+                type: 'integer',
                 tickPixelInterval: 150
             },
             yAxis: {
@@ -65,12 +65,13 @@ $(function () {
                 data: (function () {
                     // generate an array of random data
                     var data = [],
-                        time = (new Date()).getTime(),
+                        time =0,
                         i;
 
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
+                    for (i = 1; i <= 20; i += 1) {
+						time = time
+                        data.push({							
+                            x: i * 100,
                             y: Math.random()
                         });
                     }

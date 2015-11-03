@@ -26,12 +26,11 @@ shinyServer(function(input, output, session) {
 	
 	observe({
 		autoUpdate()
-		x = runif(1)
+		x = as.numeric(Sys.time()) * 100
 		y = runif(1)
 		
 		variables = sprintf('{"X":"%s", 
-                          "Y": "%s"
-                          
+                          "Y": "%s"                          
                           }', x, y)
 
 		session$sendCustomMessage(type="myDynamicCallbackHandler",variables)

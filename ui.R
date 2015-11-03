@@ -1,7 +1,11 @@
 # ui.R
  
 shinyUI( bootstrapPage(
- 
+   
+   #tags$head(tags$script(src = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"),
+   tags$script(src = "https://code.highcharts.com/highcharts.js"),
+   tags$script(src = "https://code.highcharts.com/modules/exporting.js"),
+   
   # a div named mydiv
   tags$div(id="mydiv", style="width: 50px; height :50px;
            left: 100px; top: 100px;
@@ -28,17 +32,15 @@ shinyUI( bootstrapPage(
 	'),
 	
     tags$script('
-      var serverVariable;
+    var serverVariable;
     Shiny.addCustomMessageHandler("myDynamicCallbackHandler",
       function(variables) {
         serverVariable = variables;
-        console.log(serverVariable);
+        
       });
   '),
 
-   # handler to receive custom data
-   includeScript("https://code.highcharts.com/modules/exporting.js"),
-   includeScript("https://code.highcharts.com/highcharts.js"),
+   # handler to receive custom data			
    tags$div(id ="container", style ="min-width: 310px; height: 400px; top:500px; position: relative"),
    includeScript("charts.js")
    
