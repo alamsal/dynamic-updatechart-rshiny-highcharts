@@ -1,18 +1,15 @@
-
-
 $(function () {
-    $(document).ready(function () {
+    $(document).ready(function () {	
 	
-	
-	var initialData=[];
-	
-	var1 = function(){
-		var aaa= JSON.parse(serverVariable);
-		return parseInt(aaa.X)};
-	
-	var2 = function(){
-		var bbb = JSON.parse(serverVariable);
-		return bbb.Y*100+1;};
+		var initialData=[];
+		
+		getVariableX = function(){
+			var aaa= JSON.parse(dataFromServer);
+			return parseInt(aaa.X)};
+		
+		getVariableY = function(){
+			var bbb = JSON.parse(dataFromServer);
+			return bbb.Y*100+1;};
 	
 	
         Highcharts.setOptions({
@@ -33,8 +30,7 @@ $(function () {
                         // set up the updating of the chart each second
                         var series = this.series[0];
                         setInterval(function () { 
-                            console.log(var1() +"--"+ var2())
-                            series.addPoint([var1(),var2()], true, true);
+                            series.addPoint([getVariableX(),getVariableY()], true, true);
                         }, 1000);
                     }
                 }
