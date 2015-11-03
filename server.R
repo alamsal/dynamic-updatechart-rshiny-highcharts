@@ -1,7 +1,9 @@
 # server.R
  
 shinyServer(function(input, output, session) {
- 
+	#global varible on x-axis
+	x <- 0
+	
 	output$results = renderPrint({
         input$mydata
     })
@@ -26,14 +28,14 @@ shinyServer(function(input, output, session) {
 	
 	observe({
 		autoUpdate()
-		x = as.numeric(Sys.time()) * 100
+		x <<- x + 10
 		y = runif(1)
 		
-		variables = sprintf('{"X":"%s", 
+		variableToPassClient = sprintf('{"X":"%s", 
                           "Y": "%s"                          
                           }', x, y)
 
-		session$sendCustomMessage(type="myDynamicCallbackHandler",variables)
+		session$sendCustomMessage(type="myDynamicCallbackHandler",variableToPassClient)
 	})
 	
  

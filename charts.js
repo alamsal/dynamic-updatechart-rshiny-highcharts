@@ -1,26 +1,35 @@
-var1 = function(){
-    var aaa= JSON.parse(serverVariable);
-    return parseInt(aaa.X)};
-var2 = function(){
-    var bbb = JSON.parse(serverVariable);
-    return bbb.Y*100+1;};
+
 
 $(function () {
     $(document).ready(function () {
+	
+	
+	var initialData=[];
+	
+	var1 = function(){
+		var aaa= JSON.parse(serverVariable);
+		return parseInt(aaa.X)};
+	
+	var2 = function(){
+		var bbb = JSON.parse(serverVariable);
+		return bbb.Y*100+1;};
+	
+	
         Highcharts.setOptions({
             global: {
-                useUTC: false
+                useUTC: false,
+				pointStart:0
             }
         });
 
         $('#container').highcharts({
             chart: {
+				pointStart:'0',
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
                     load: function () {
-
                         // set up the updating of the chart each second
                         var series = this.series[0];
                         setInterval(function () { 
@@ -35,12 +44,13 @@ $(function () {
             },
             xAxis: {
                 type: 'integer',
-                tickPixelInterval: 150
+                tickPixelInterval: 150,		
             },
             yAxis: {
                 title: {
                     text: 'Value'
                 },
+				
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -50,8 +60,8 @@ $(function () {
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
+                        'X: '+Highcharts.numberFormat(this.x,2) + '<br/>' +
+                        'Y: '+Highcharts.numberFormat(this.y, 2);
                 }
             },
             legend: {
@@ -60,22 +70,18 @@ $(function () {
             exporting: {
                 enabled: false
             },
+			
             series: [{
-                name: 'Random data',
+				name: 'Random data',
                 data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time =0,
-                        i;
-
-                    for (i = 1; i <= 20; i += 1) {
-						time = time
-                        data.push({							
-                            x: i * 100,
-                            y: Math.random()
-                        });
-                    }
-                    return data;
+                    // generate an array of random data for initial setup
+						for(var i = -10;i<=0;i++){
+							initialData.push({							
+								x: i,
+								y: Math.random()
+							});
+						}
+                    return initialData;
                 }())
             }]
         });

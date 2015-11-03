@@ -2,7 +2,6 @@
  
 shinyUI( bootstrapPage(
    
-   #tags$head(tags$script(src = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"),
    tags$script(src = "https://code.highcharts.com/highcharts.js"),
    tags$script(src = "https://code.highcharts.com/modules/exporting.js"),
    
