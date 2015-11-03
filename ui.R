@@ -7,7 +7,7 @@ shinyUI( bootstrapPage(
   # handler to receive data from server
     tags$script('
     var dataFromServer;
-    Shiny.addCustomMessageHandler("myDynamicCallbackHandler",
+    Shiny.addCustomMessageHandler("SendObjectToClientDynamicCallbackHandler",
       function(variables) {
         dataFromServer = variables;
         
@@ -15,7 +15,7 @@ shinyUI( bootstrapPage(
   '),
 
    # handler to receive custom data			
-   tags$div(id ="container", style ="min-width: 310px; height: 400px; top:500px; position: relative"),
+   tags$div(id ="container", style ="min-width: 310px; height: 400px; top:200px; position: relative"),
    includeScript("charts.js")   
  
 ))
