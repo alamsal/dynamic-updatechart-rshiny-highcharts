@@ -27,6 +27,15 @@ shinyUI( bootstrapPage(
 			});
 	'),
 	
+    tags$script('
+      var serverVariable;
+    Shiny.addCustomMessageHandler("myDynamicCallbackHandler",
+      function(variables) {
+        serverVariable = variables;
+        console.log(serverVariable);
+      });
+  '),
+
    # handler to receive custom data
    includeScript("https://code.highcharts.com/modules/exporting.js"),
    includeScript("https://code.highcharts.com/highcharts.js"),

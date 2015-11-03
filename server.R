@@ -24,6 +24,18 @@ shinyServer(function(input, output, session) {
 		session$sendCustomMessage(type = "myCallbackHandler", color)
 	})
 	
+	observe({
+		autoUpdate()
+		x = runif(1)
+		y = runif(1)
+		
+		variables = sprintf('{"X":"%s", 
+                          "Y": "%s"
+                          
+                          }', x, y)
+
+		session$sendCustomMessage(type="myDynamicCallbackHandler",variables)
+	})
 	
  
 })

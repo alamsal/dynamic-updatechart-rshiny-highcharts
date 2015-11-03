@@ -1,6 +1,10 @@
-var1 = function(){return (new Date()).getTime();};
-var2 = function(){return Math.random();};
- 
+var1 = function(){
+    var aaa= JSON.parse(serverVariable);
+    return aaa.X;};
+var2 = function(){
+    var bbb = JSON.parse(serverVariable);
+    return bbb.Y;};
+
 $(function () {
     $(document).ready(function () {
         Highcharts.setOptions({
@@ -20,7 +24,7 @@ $(function () {
                         // set up the updating of the chart each second
                         var series = this.series[0];
                         setInterval(function () { 
-                            console.log(var1 +"--"+ var2)
+                            console.log(var1() +"--"+ var2())
                             series.addPoint([var1(),var2()], true, true);
                         }, 1000);
                     }
