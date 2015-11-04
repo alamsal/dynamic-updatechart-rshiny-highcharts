@@ -11,4 +11,5 @@ library(shiny)
 
 #Step 3: Execute the shiny root folder
   a. Download and put charts.js,server.R and ui.R in a folder named 'myDynamicShinyCharts'
+  
   b. runApp('myDynamicShinyCharts')
